@@ -1,0 +1,44 @@
+@model IEnumerable<SP3066169MVCDBREC.Models.Livro>
+
+@{
+    ViewData["Title"] = "Livro";
+}
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.Count() == 0)
+{
+    <p>Nenhum livro cadastrado.</p>    
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>IdLivro</th>
+                <th>ISBNLivro</th>
+                <th>TituloLivro</th>
+                <th>PrecoLivro</th>
+                <th>CategoriaLivro</th>
+                <th>IdEditora</th>
+                <th></th>
+            </tr>
+            <tbody>
+                @foreach(var livro in Model)
+                {
+                    <tr>
+                        <td>@livro.IdLivro</td>
+                        <td>@livro.ISBNLivro</td>
+                        <td>@livro.TituloLivro</td>
+                        <td>@livro.PrecoLivro</td>
+                        <td>@livro.CategoriaLivro</td>
+                        <td>@livro.IdEditora</td>
+                        <td>
+                            <a href="/Livro/Show/?IdLivro=@livro.IdLivro">Ver</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </thead>
+    </table>
+}
